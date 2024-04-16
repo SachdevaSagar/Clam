@@ -19,8 +19,10 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Create iPhone 8 Simulator
-      run: xcrun simctl create "iPhone 8" "com.apple.CoreSimulator.SimDeviceType.iPhone-8" "com.apple.CoreSimulator.SimRuntime.iOS-14-4"
-
-    - name: Xcode test on iPhone 8
-      run: xcodebuild clean test -scheme "Clam" -destination 'platform=iOS Simulator,name=iPhone 8 (1st generation)'
+    - name: Prepare iOS 12 simulator
+      run: |
+            sudo mkdir -p /Library/Developer/CoreSimulator/Profiles/Runtimes
+            sudo ln -s /Applications/Xcode_10.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ 12.4.simruntime
+            xcrun simctl list runtimes
+            xcrun simctl create custom-test-device "iPad Pro (9.7-inch)" "com.apple.CoreSimulator.SimRuntime.iOS-12-4"
+            xcrun simctl list devices 12.4
