@@ -1,0 +1,16 @@
+workflows:
+  ci-workflow:
+    name: Pipeline
+    scripts:
+    - name: iOS test
+      script: |
+        xcode-project run-tests \
+          --workspace Clam.xcworkspace \
+          --scheme Clam \
+          --device "iPhone 11"
+   
+   pulishing:
+   email:
+   recipients:
+    -sagarstpss@gmail.com
+    
