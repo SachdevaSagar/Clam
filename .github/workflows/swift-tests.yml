@@ -19,6 +19,6 @@ jobs:
 
     - name: Build and test
       run: |
-        xcodebuild clean test -workspace Clam.xcworkspace -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 12'
+        xcodebuild clean test -xcodeproj Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 12'
 
     # You might want to include steps for reporting test results or artifacts
