@@ -16,10 +16,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       
-      - name: Set up Xcode
-        uses: actions/setup-xcode@v2
-        with:
-          xcode-version: '13.x'
+      - name: Install Xcode command line tools
+        run: sudo xcode-select --install
+      
+      - name: Accept Xcode license
+        run: sudo xcodebuild -license accept
       
       - name: Build and Test
         run: xcodebuild -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,OS=15.0,name=iPhone 13' test
