@@ -23,7 +23,7 @@ jobs:
         
       - name: Build and Test with Xcode
         run: |
-          xcodebuild test -scheme Clam -destination 'platform:iOS Simulator,name:iPhone 13 Pro'
+          xcodebuild test -scheme Clam -destination 'platform:iOS Simulator,name=iPhone 13 Pro'
         env:
           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
           XCODE_VERSION: ${{ matrix.xcode }}
