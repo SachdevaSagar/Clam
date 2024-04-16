@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Swift Tests
 
 on:
   push:
@@ -9,18 +9,15 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: macos-latest
-
+    
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Swift
-      uses: actions/setup-swift@v2
-      with:
-        swift-version: '5.5'
-
-    - name: Build and Test
-      run: |
-        swift test --package-path Path/To/ClamTests
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: Accept Xcode license
+        run: sudo xcodebuild -license accept
+      
+      - name: Build and Test
+        run: xcodebuild -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.0' test
