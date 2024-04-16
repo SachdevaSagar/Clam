@@ -15,7 +15,12 @@ jobs:
       - name: Check Xcode Version (Optional)
         run: |
           xcodebuild -version
-
+          
+      - name: Clean Build Folder (Optional)
+        run: |
+          xcodebuild clean -scheme Clam
+        shell: bash
+        
       - name: Build and Test with Xcode
         run: |
           xcodebuild test -scheme Clam -destination 'platform:iOS Simulator,name:iPhone 13 Pro'
