@@ -1,20 +1,34 @@
-name: CI
+name: XCUnit Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main, feature/* ]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
+    name: Run XCUnit Tests
     runs-on: macOS-latest
 
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Test
-        run: xcodebuild test -project Clam.xcodeproj/ -scheme Clam -resultBundlePath TestResults -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14"
-        
+    - name: Set up Xcode
+      uses: actions/setup-xcode@v2
+      with:
+        xcode-version: '12.x' # Specify the Xcode version you want to use
+
+    - name: Install dependencies
+      run: |
+        sudo gem install bundler
+        bundle install # If you're using CocoaPods or other dependency managers
+
+    - name: Build and test
+      run: |
+        xcodebuild clean test -workspace Clam.xcworkspace -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 12'
+
+    # You might want to include steps for reporting test results or artifacts
