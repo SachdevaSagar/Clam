@@ -9,7 +9,7 @@ workflows:
           --scheme Clam \
           --device "iPhone 11"
    
-   pulishing:
+pulishing:
    email:
    recipients:
     -sagarstpss@gmail.com
