@@ -17,11 +17,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: List available simulators
-      run: xcrun simctl list devices
+    - name: Launch simulator
+      run: xcrun simctl boot "iPhone 11 Pro Max" # Replace with the desired simulator name
 
     - name: Build and test
       run: |
-        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max,OS=16.2'
+        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,id=DA792B28-0748-44E8-861B-7E6C5E8A39D1'
 
     # You might want to include steps for reporting test results or artifacts
