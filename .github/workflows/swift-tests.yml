@@ -1,20 +1,31 @@
-name: CI
+
+name: Builds Apple iOS project using CI/CD process
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, feature/* ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: macOS-latest
-
+  Build-iOS-Project:
+    runs-on: macos-latest
+    name: Build iOS Project
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout from repository
+        uses: actions/checkout@v3
 
-      - name: Test
-        run: |
-          xcodebuild test -project Clam.xcodeproj/ -scheme Clam -resultBundlePath TestResults -sdk iphonesimulator \
-          -destination "platform=iOS Simulator,name=iPhone 8"
+      - name: Print out help command from xcodebuild
+        run: xcodebuild -help
+
+      - name: List out project from Apple iOS xcode project
+        run: xcodebuild -list -project Clam.xcodeproj
+
+      - name: Clean iOS Project
+        run: xcodebuild clean
+
+      - name: Archive the ios project
+        run: xcodebuild archive -scheme Clam -sdk iphoneos -allowProvisioningUpdates -archivePath Clam.xcarchive
+
+      
