@@ -17,11 +17,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: |
-        sudo gem install bundler
-        bundle install # If you're using CocoaPods or other dependency managers
-
     - name: Build and test
       run: |
         xcodebuild clean test -workspace Clam.xcworkspace -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 12'
