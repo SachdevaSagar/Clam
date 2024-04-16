@@ -18,7 +18,6 @@ jobs:
 
       - name: Build and Test with Xcode
         run: |
-          xcodebuild build -scheme Clam -allowProvisioningUpdates
           xcodebuild test -scheme Clam
         env:
           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
