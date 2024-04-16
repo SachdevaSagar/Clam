@@ -1,4 +1,4 @@
-name: Run Swift Tests
+name: Run Unit Tests
 
 on:
   push:
@@ -14,5 +14,11 @@ jobs:
       - name: Install Dependencies
         run: swift package update
 
-      - name: Build and Test
-        run: xcodebuild build-test -scheme Clam
+      - name: Build and Test with Xcode
+        uses: xcodeact/xcode-action@v1
+        with:
+          project: Clam.xcodeproj
+          scheme: Clam
+          test: true
+          configuration: Release
+
