@@ -1,4 +1,4 @@
-name: XCUnit Tests
+name: Swift Tests
 
 on:
   push:
@@ -9,31 +9,15 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run XCUnit Tests
+  build:
     runs-on: macos-latest
-
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v2
       
-    - name: List iOS Devices & Platforms
-      run: |
-        xcrun simctl list
-        
-    - name: Install iOS 14.2 Runtime
-      run: |
-        gem install xcode-install
-        xcversion simulators --install='iOS 14.2'
-        
-    - name: Create and Run iOS Emulator - iPhoneX on iOS 14.2, Update default appium config for iOS
-      run: |
-        xcrun simctl create TestiPhoneX com.apple.CoreSimulator.SimDeviceType.iPhone-X com.apple.CoreSimulator.SimRuntime.iOS-14-2 > deviceid.txt 
-        DEVICEUUID=`cat deviceid.txt`          
-        echo $DEVICEUUID        
-        xcrun simctl boot $DEVICEUUID
-        
-    - name: Build and test
-      run: |
-        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination "platform=iOS Simulator,id=$DEVICEUUID"
-    # You might want to include steps for reporting test results or artifacts
+      - name: Accept Xcode license
+        run: sudo xcodebuild -license accept
+      
+      - name: Build and Test
+        run: xcrun xcodebuild -project "Clam.xcodeproj" -scheme "Clam" -sdk "iphonesimulator12.0" -destination "OS=12.0,name=iPhone X" -configuration Debug -enableCodeCoverage YES clean build test        
