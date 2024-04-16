@@ -25,11 +25,10 @@ jobs:
         run: |
           xcodebuild build -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
 
-      - name: Generate Coverage Report
-        run: |
-          xcrun xccov view --report --json DerivedData/Build/Logs/Test/*.xccovarchive > coverage_report.json
-          xcrun xccov format --json DerivedData/Build/Logs/Test/*.xccovarchive > coverage_report.txt
-          xcrun xccov html --output-directory coverage DerivedData/Build/Logs/Test/*.xccovarchive
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
           
         env:
            # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
