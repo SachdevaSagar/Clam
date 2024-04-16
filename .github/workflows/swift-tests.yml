@@ -24,6 +24,11 @@ jobs:
       - name: Build and Test with Xcode
         run: |
           xcodebuild build -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
+
+      - name: Generate Test Coverage Report (Optional)
+        run: |
+          bash <(xcrun simctl spctl get url --bundle com.apple.CoreSimulator.SIMULATORUID --process com.apple.xcode.companionapp)'/Library/Developer/CoreSimulator/Profiles/RenderConfig/$(xcrun simctl spctl get --data booted --key deviceType)/com.apple.CoreSimulator.SimDeviceType.plist' | grep DYLD_LIBRARY_PATH | cut -d ':' -f2 | tr -d '\n' && xcrun xcov report --json <(xcrun simctl spctl get url --bundle com.apple.CoreSimulator.SIMULATORUID --process com.apple.xcode.companionapp)'/Library/Developer/CoreSimulator/Profiles/Coverage/$(xcrun simctl spctl get --data booted --key deviceType)/com.apple.CoreSimulator.SimDeviceType.plist' > coverage.json
+
         env:
-          # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
+           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
           XCODE_VERSION: ${{ matrix.xcode }}
