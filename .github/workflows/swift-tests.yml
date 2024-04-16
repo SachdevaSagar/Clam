@@ -20,4 +20,4 @@ jobs:
         run: sudo xcodebuild -license accept
       
       - name: Build and Test
-        run: xcodebuild -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,name=iPhone 13' test
+        run: xcodebuild -project Clam.xcodeproj -scheme Clam -destination 'platform=ios-simulator,name=iPhone 13' test
