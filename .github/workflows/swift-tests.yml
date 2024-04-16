@@ -1,23 +1,15 @@
-name: Swift Tests
+name: Swift MacOS - Build and Run tests
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  build:
+  test:
+    name: Test
     runs-on: macos-latest
     
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      
-      - name: Accept Xcode license
-        run: sudo xcodebuild -license accept
-      
-      - name: Build and Test
-        run: xcrun xcodebuild -project "Clam.xcodeproj" -scheme "Clam" -sdk "iphonesimulator" -destination "platform=iOS Simulator,id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder" -configuration Debug -enableCodeCoverage YES clean build test
+      - uses: actions/checkout@v2
+      - name: Build and test
+        run: |
+          xcodebuild clean test -project AirConnect.xcodeproj -scheme AirConnect -destination 'platform=OS X,arch=x86_64' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        
