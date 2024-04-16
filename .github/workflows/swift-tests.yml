@@ -18,12 +18,12 @@ jobs:
           
       - name: Clean Build Folder (Optional)
         run: |
-          xcodebuild clean -scheme ClamTests
+          xcodebuild clean -scheme Clam
         shell: bash
         
       - name: Build and Test with Xcode
         run: |
-          xcodebuild test -scheme ClamTests -destination 'platform:iOS Simulator,name:iPhone 17.4 Simulator'
+          xcodebuild test -scheme Clam -destination 'platform:iOS Simulator,name:iPhone 17.4 Simulator'
         env:
           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
           XCODE_VERSION: ${{ matrix.xcode }}
