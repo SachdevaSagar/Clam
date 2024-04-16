@@ -35,5 +35,5 @@ jobs:
         
     - name: Build and test
       run: |
-        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,id=$DEVICEUUID'
+        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination "platform=iOS Simulator,id=$DEVICEUUID"
     # You might want to include steps for reporting test results or artifacts
