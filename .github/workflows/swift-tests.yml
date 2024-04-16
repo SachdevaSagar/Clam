@@ -17,8 +17,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: List available simulators
+      run: xcrun simctl list devices
+
     - name: Build and test
       run: |
-        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,name=Any iOS Simulator Device'
+        xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,id=C1E2A8A3-3ACE-4781-86B9-C191E56DF85D'
 
     # You might want to include steps for reporting test results or artifacts
