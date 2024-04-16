@@ -18,6 +18,36 @@
             endingLineNumber = "57"
             landmarkName = "login(email:password:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7980753-BE68-47A0-B556-7C3630B683B5 - 2146c739d9ebd94d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Clam.LoggedInUser) -&gt; () in Clam.LoginViewController.login(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Clam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tpss/Desktop/Clam/Clam/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "C7980753-BE68-47A0-B556-7C3630B683B5 - 2146c739d9ebd94d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Clam.LoggedInUser) -&gt; () in Clam.LoginViewController.login(email: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "Clam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tpss/Desktop/Clam/Clam/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,6 +64,36 @@
             endingLineNumber = "88"
             landmarkName = "authenticateUser(email:password:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A51BDFC4-6C48-4B58-AB2E-E9D092A92552 - 2b91251bc21d7327"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.Data, __C.NSURLResponse) throws -&gt; Clam.LoggedInUser in Clam.LoginViewController.authenticateUser(email: Swift.String, password: Swift.String) -&gt; Combine.AnyPublisher&lt;Clam.LoggedInUser, Swift.Error&gt;"
+                  moduleName = "Clam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tpss/Desktop/Clam/Clam/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+               <Location
+                  uuid = "A51BDFC4-6C48-4B58-AB2E-E9D092A92552 - 2b91251bc21d7327"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.Data, __C.NSURLResponse) throws -&gt; Clam.LoggedInUser in Clam.LoginViewController.authenticateUser(email: Swift.String, password: Swift.String) -&gt; Combine.AnyPublisher&lt;Clam.LoggedInUser, Swift.Error&gt;"
+                  moduleName = "Clam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tpss/Desktop/Clam/Clam/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
