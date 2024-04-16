@@ -15,10 +15,7 @@ jobs:
         run: swift package update
 
       - name: Build and Test with Xcode
-        uses: xcodeact/xcode-action@v1
-        with:
-          project: Clam.xcodeproj
-          scheme: Clam
-          test: true
-          configuration: Release
+        run: |
+          xcodebuild -project Clam.xcodeproj -scheme Clam -test
+
 
