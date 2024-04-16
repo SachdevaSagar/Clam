@@ -11,11 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: swift package update
-
       - name: Build and Test with Xcode
-        run: |
-          xcodebuild -project Clam.xcodeproj -scheme Clam -test
-
-
+        run: xcodebuild build-test -scheme Clam
