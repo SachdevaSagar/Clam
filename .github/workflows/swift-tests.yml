@@ -19,8 +19,8 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-    - name: Create iPhone SE Simulator
-      run: xcrun simctl create "iPhone SE (1st generation)" "iPhone SE (1st generation)"
+    - name: Create iPhone 8 Simulator
+      run: xcrun simctl create "iPhone 8" "com.apple.CoreSimulator.SimDeviceType.iPhone-8" "com.apple.CoreSimulator.SimRuntime.iOS-14-4"
 
-    - name: Xcode test on iPhone SE
-      run: xcodebuild clean test -scheme "Clam" -destination 'platform=iOS Simulator,name=iPhone SE (1st generation)'
+    - name: Xcode test on iPhone 8
+      run: xcodebuild clean test -scheme "Clam" -destination 'platform=iOS Simulator,name=iPhone 8 (1st generation)'
