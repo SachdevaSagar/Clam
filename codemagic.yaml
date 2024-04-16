@@ -7,7 +7,6 @@ workflows:
         xcode-project run-tests \
           --workspace Clam.xcodeproj \
           --scheme Clam \
-          --device "iPhone 11"
    
 pulishing:
    email:
