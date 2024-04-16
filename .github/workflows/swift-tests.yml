@@ -18,14 +18,8 @@ jobs:
 
       - name: Build and Test with Xcode
         run: |
-          if [[ $(xcodebuild -version | grep Xcode\ ) ]]; then
-            # Xcode 11+ syntax
-            xcodebuild build-test -scheme Clam
-          else
-            # Older Xcode version syntax
-            xcodebuild build -scheme Clam
-            xcodebuild test -scheme Clam
-          fi
+          xcodebuild build -scheme Clam
+          xcodebuild test -scheme Clam
         env:
           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
           XCODE_VERSION: ${{ matrix.xcode }}
