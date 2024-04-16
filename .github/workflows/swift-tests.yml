@@ -11,15 +11,21 @@ on:
 jobs:
   test:
     name: Run XCUnit Tests
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Launch simulator
-      run: xcrun simctl boot "iPhone 11 Pro Max" # Replace with the desired simulator name
-
+      
+    - name: List iOS Devices & Platforms
+      run: |
+        xcrun simctl list
+        
+    - name: Install iOS 14.2 Runtime
+      run: |
+        gem install xcode-install
+        xcversion simulators --install='iOS 14.2'
+        
     - name: Build and test
       run: |
         xcodebuild clean test -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,id=DA792B28-0748-44E8-861B-7E6C5E8A39D1'
