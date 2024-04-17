@@ -15,12 +15,7 @@ jobs:
       - name: Check Xcode Version (Optional)
         run: |
           xcodebuild -version
-          
-      - name: Clean Build Folder (Optional)
-        run: |
-          xcodebuild clean -scheme Clam
-        shell: bash
-        
+ 
       - name: Build and Test with Xcode
         run: |
           xcodebuild build -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
