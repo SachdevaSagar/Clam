@@ -23,13 +23,15 @@ jobs:
         
       - name: Build and Test with Xcode
         run: |
-          xcodebuild build -project Clam.xcodeproj -scheme Clam -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
+          xcodebuild build -project Clam.xcodeproj -scheme ClamTests -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
 
-      - uses: kishikawakatsumi/xcresulttool@v1
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          path: TestResults.xcresult
-        if: success() || failure()
-          
+          name: TestResults
+          path: ./path/to/test/reports
+
         env:
            # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
           XCODE_VERSION: ${{ matrix.xcode }}
