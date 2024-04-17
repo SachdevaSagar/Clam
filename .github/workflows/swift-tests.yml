@@ -16,7 +16,7 @@ jobs:
       run: |
         xcodebuild test \
         -project "Clam.xcodeproj" \
-        -scheme "Clam" \
+        -scheme "ClamTests" \
         -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4' \
         -only-testing:ClamTests/ValidatorTests/testValidEmail
 
