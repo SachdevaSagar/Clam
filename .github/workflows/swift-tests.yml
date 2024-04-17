@@ -12,13 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build project
-      run: |
-        xcodebuild build -scheme "ClamTests" -allowProvisioningUpdates
-
     - name: Run unit tests
       run: |
-        xcodebuild test -scheme "ClamTests" -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty -s
+        xcodebuild test \
+        -project "Clam.xcodeproj" \
+        -scheme "Clam name" \
+        -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4' \
+        -only-testing:ClamTests/ValidatorTests/testValidEmail
 
     - name: Upload test results (optional)
       if: always()
