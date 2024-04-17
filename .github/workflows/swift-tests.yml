@@ -20,9 +20,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          # Add commands to run your unit tests
-          xcodebuild test -scheme "ClamTests" -destination "platform=iOS Simulator,name=iPhone 11" -only-testing:ClamTests.ValidatorTests
-
+          xcodebuild build -project Clam.xcodeproj -scheme ClamTests -destination 'platform=iOS Simulator,name=iPhone 11' -allowProvisioningUpdates | xcpretty -s
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
