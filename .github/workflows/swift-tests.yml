@@ -8,23 +8,21 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Build project
-        run: |
-          # Add commands to build your Xcode project
-          xcodebuild build -scheme "ClamTests"
+    - name: Build project
+      run: |
+        xcodebuild build -scheme "ClamTests" -allowProvisioningUpdates
 
-      - name: Run unit tests
-        run: |
-          xcodebuild build -project Clam.xcodeproj -scheme ClamTests -destination 'platform=iOS Simulator,name=iPhone 11'
-    
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: TestResults
-          path: ./path/to/test/reports # Path to your test reports
+    - name: Run unit tests
+      run: |
+        xcodebuild test -scheme "ClamTests" -destination 'platform=iOS Simulator,name=iPhone 11' | xcpretty -s
+
+    - name: Upload test results (optional)
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: ./path/to/test/reports
