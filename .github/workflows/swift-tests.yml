@@ -18,7 +18,7 @@ jobs:
           
       - name: Clean Build Folder (Optional)
         run: |
-          xcodebuild clean -scheme Clam
+          xcodebuild clean -scheme ClamTests
         shell: bash
         
       - name: Build and Test with Xcode
