@@ -1,36 +1,31 @@
-name: Run Unit Tests
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: macos-latest
-
+    
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Check Xcode version (optional)
-      - name: Check Xcode Version (Optional)
+      - name: Build project
         run: |
-          xcodebuild -version
-          
-      - name: Clean Build Folder (Optional)
+          # Add commands to build your Xcode project
+          xcodebuild build -scheme "ClamTests"
+
+      - name: Run unit tests
         run: |
-          xcodebuild clean -scheme ClamTests
-        shell: bash
-        
-      - name: Build and Test with Xcode
-        run: |
-          xcodebuild build -project Clam.xcodeproj -scheme ClamTests -destination 'platform=iOS Simulator,OS=14.1,name=iPad Pro (12.9-inch) (4th generation)' | xcpretty -s
+          # Add commands to run your unit tests
+          xcodebuild test -scheme "ClamTests" -destination "platform=iOS Simulator,name=iPhone 11" -only-testing:ClamTests.ValidatorTests
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: TestResults
-          path: ./path/to/test/reports
-        env:
-           # Optional: Set Xcode version requirement here (e.g., Xcode-13.2)
-          XCODE_VERSION: ${{ matrix.xcode }}
+          path: ./path/to/test/reports # Path to your test reports
